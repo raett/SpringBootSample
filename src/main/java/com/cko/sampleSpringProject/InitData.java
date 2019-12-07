@@ -1,8 +1,8 @@
 package com.cko.sampleSpringProject;
 
-import com.cko.sampleSpringProject.dao.FilmDAO;
+import com.cko.sampleSpringProject.dao.CarDAO;
 import com.cko.sampleSpringProject.model.Authority;
-import com.cko.sampleSpringProject.model.Film;
+import com.cko.sampleSpringProject.model.Car;
 import com.cko.sampleSpringProject.model.User;
 import com.cko.sampleSpringProject.service.AuthorityService;
 import com.cko.sampleSpringProject.service.SMSCService;
@@ -29,7 +29,9 @@ public class InitData {
     SMSCService smscSender;
 
     @Autowired
-    FilmDAO filmDAO;
+    CarDAO carDAO;
+
+
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -37,15 +39,18 @@ public class InitData {
     Faker faker = new Faker();
 
     public void initData() {
-        initFilms();
-        initUserAndRoles();
+
+//        initUserAndRoles();
+//        initCars();
     }
-    private void initFilms() {
-        for (int i = 0; i < 10; i++) {
-            Film film = new Film(faker.superhero().name(),i,i*2);
-            filmDAO.save(film);
+
+    private void initCars() {
+        for (int i = 0;i < 10; i++) {
+            Car car = new Car(faker.color().name(), faker.name().firstName(), i*5000);
+            carDAO.save(car);
         }
     }
+
 
     private void initUserAndRoles(){
         Authority adminAuthority = new Authority("ROLE_ADMIN");
