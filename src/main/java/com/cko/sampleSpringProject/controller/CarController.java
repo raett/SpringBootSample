@@ -1,3 +1,4 @@
+
 package com.cko.sampleSpringProject.controller;
 
         import com.cko.sampleSpringProject.dao.CarDAO;
@@ -25,7 +26,7 @@ public class CarController {
     }
 
     @GetMapping("/edit")
-    public ModelAndView showEditPage(@RequestParam int id){
+    public ModelAndView showEditPage(@RequestParam long id){
         ModelAndView modelAndView = new ModelAndView();modelAndView.setViewName("CarEdit");
         Car car = carDAO.findCarById(id);
         modelAndView.addObject("car", car);
