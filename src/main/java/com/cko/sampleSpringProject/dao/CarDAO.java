@@ -9,4 +9,5 @@ import java.util.List;
 public interface CarDAO extends CrudRepository<Car, Long> {
     Car findCarById(long id);
     List<Car> findCarsByPriceIsLessThan(int price);
+    List<Car> findAll ();
 }

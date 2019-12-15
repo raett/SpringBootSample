@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet"
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-4"><p></p></div>
             <div class="col-4">
-                <form method="post" action="/authenticate">
+                <form method="post" action="/cars/add" >
                     <input  id="color" class="fadeIn third" name="color" placeholder="Color">
                     <p></p>
                     <input id="model" class="fadeIn third" name="model" placeholder="Model">

@@ -48,6 +48,7 @@ public class InitData {
         for (int i = 0;i < 10; i++) {
             Car car = new Car(faker.color().name(), faker.name().firstName(), i*5000);
             carDAO.save(car);
+
         }
     }
 

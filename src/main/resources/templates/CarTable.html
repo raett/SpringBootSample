@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <!-- Bootstrap CSS -->
@@ -20,24 +20,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+    <tr th:each="car : ${cars}">
+        <th th:text = "${car.id}"></th>
+        <td th:text = "${car.color}">Mark</td>
+        <td th:text = "${car.model}">Otto</td>
+        <td th:text = "${car.price}">@mdo</td>
+        <td >
+            <a class="nav-item nav-link active" th:href="@{'/cars/edit?id='+${car.id}}">Edit</a>
+            <a class="nav-item nav-link active" th:href="@{'/cars/delete?id='+${car.id}}">Delete</a>
+        </td>
     </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
+
     </tbody>
 
 </table>
