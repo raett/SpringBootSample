@@ -1,8 +1,10 @@
 package com.cko.sampleSpringProject;
 
 import com.cko.sampleSpringProject.dao.CarDAO;
+import com.cko.sampleSpringProject.dao.EmployeesDAO;
 import com.cko.sampleSpringProject.model.Authority;
 import com.cko.sampleSpringProject.model.Car;
+import com.cko.sampleSpringProject.model.Employe;
 import com.cko.sampleSpringProject.model.User;
 import com.cko.sampleSpringProject.service.AuthorityService;
 import com.cko.sampleSpringProject.service.SMSCService;
@@ -15,6 +17,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static java.lang.Math.random;
 
 @Component
 public class InitData {
@@ -30,6 +35,9 @@ public class InitData {
 
     @Autowired
     CarDAO carDAO;
+
+    @Autowired
+    EmployeesDAO employeesDAO;
 
 
 
@@ -51,6 +59,16 @@ public class InitData {
 
         }
     }
+    private void initEmpl() {
+        for (int i = 0;i < 10; i++) {
+            String fio = faker.name().fullName();
+            String phoneNum = "+" + faker.phoneNumber();
+            Employe empl= new Employe(fio, phoneNum, i );
+            employeesDAO.save(empl);
+        }
+    }
+
+
 
 
     private void initUserAndRoles(){

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-4"><a class="nav-item nav-link active" href="/empl/allempl">Table</a></div>
+</div>
+</div>
+<div class="row">
+    <div class="col-5"><p></p></div>
+    <div class="col-4">
+        <form method="post" action="/cars/add" >
+            <input  id="color" class="fadeIn third" name="color" placeholder="ФИО">
+            <p></p>
+            <input id="model" class="fadeIn third" name="model" placeholder="Телефон">
+            <p></p>
+            <input id="price" class="fadeIn third" name="price" placeholder="Стаж">
+            <p></p>
+            <input type="submit" class="fadeIn fourth" value="Добавить сотрудника">
+        </form>
+    </div>
+    <div class="col-3"><p></p></div>
+</div>
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
