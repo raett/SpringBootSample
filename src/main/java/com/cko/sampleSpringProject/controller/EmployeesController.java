@@ -22,41 +22,42 @@ public class EmployeesController {
     EmployeesDAO employeesDAO;
 
     @GetMapping("/addempls")
-    public String showLoginPage(){
+    public String showLoginPage() {
 
-        return "CarAdd";
+        return "EmplAdd";
     }
 
     @GetMapping("/editempl")
-    public ModelAndView showEditPage(@RequestParam long id){
-        ModelAndView modelAndView = new ModelAndView();modelAndView.setViewName("CarEdit");
+    public ModelAndView showEditPage(@RequestParam long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("EmplEdit");
         Employe employe = employeesDAO.findEmployeById(id);
         modelAndView.addObject("empls", employe);
         return modelAndView;
     }
 
     @GetMapping("/deleteempl")
-    public RedirectView showDeletePage(@RequestParam int id){
+    public RedirectView showDeletePage(@RequestParam int id) {
         Employe employe = employeesDAO.findEmployeById(id);
         employeesDAO.delete(employe);
-        return new RedirectView("/employelist");
+        return new RedirectView("/emlp/employelist");
     }
 
     @PostMapping("/editempl")
-    public RedirectView editEmpl (Employe employe){
+    public RedirectView editEmpl(Employe employe) {
         employeesDAO.save(employe);
-        return new RedirectView("//employelist");
+        return new RedirectView("/emlp/employelist");
     }
 
     @PostMapping("/addempls")
-    public RedirectView addEmpl (Employe employe){
+    public RedirectView addEmpl(Employe employe) {
         employeesDAO.save(employe);
-        return new RedirectView("/employelist");
+        return new RedirectView("/emlp/employelist");
     }
 
 
     @GetMapping("/employelist")
-    public ModelAndView showAllEmpl(){
+    public ModelAndView showAllEmpl() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("ListOfEmployees");
         modelAndView.addObject("empls", employeesDAO.findAll());

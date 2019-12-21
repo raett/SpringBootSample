@@ -26,14 +26,14 @@
         <td th:text = "${employees.phone}"></td>
         <td th:text = "${employees.experience}"></td>
         <td >
-            <a class="nav-item nav-link active" th:href="@{'/cars/editempl?id='+${employees.id}}">Edit</a>
-            <a class="nav-item nav-link active" th:href="@{'/cars/deleteempl?id='+${employees.id}}">Delete</a>
+            <a class="nav-item nav-link active" th:href="@{'/emlp/editempl?id='+${employees.id}}">Edit</a>
+            <a class="nav-item nav-link active" th:href="@{'/emlp/deleteempl?id='+${employees.id}}">Delete</a>
         </td>
     </tr>
 
     </tbody>
 
 </table>
-<a class="nav-item nav-link active" href="/cars/add">Add</a>
+<a class="nav-item nav-link active" href="/emlp/addempls">Add</a>
 </body>
 </html>

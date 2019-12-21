@@ -16,14 +16,14 @@
 <div class="row">
     <div class="col-4"><p></p></div>
     <div class="col-4">
-        <form method="post" action="/cars/edit" >
+        <form method="post" action="/emlp/addempls" >
             <input th:value = "${car.id}" id="id" class="fadeIn third" name="id" readonly>
             <p></p>
-            <input th:value = "${car.color}" id="color" class="fadeIn third" name="color" placeholder="Color">
+            <input th:value = "${car.color}" id="color" class="fadeIn third" name="fio" placeholder="Color">
             <p></p>
-            <input th:value = "${car.model}" id="model" class="fadeIn third" name="model" placeholder="Model">
+            <input th:value = "${car.model}" id="model" class="fadeIn third" name="phone" placeholder="Model">
             <p></p>
-            <input th:value = "${car.price}" id="price" class="fadeIn third" name="price" placeholder="Price">
+            <input th:value = "${car.price}" id="price" class="fadeIn third" name="experience" placeholder="Price">
             <p></p>
             <input type="submit" class="fadeIn fourth" value="Edit car">
         </form>

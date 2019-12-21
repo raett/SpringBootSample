@@ -18,6 +18,9 @@ public class Employe {
     @Column
     private int experience;
 
+    public Employe() {
+    }
+
     public Employe(String fio, String phone, int experience) {
         this.fio = fio;
         this.phone = phone;
