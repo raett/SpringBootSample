@@ -15,14 +15,19 @@ public class MainController {
     @Autowired
     CarDAO carDAO;
 
+    @GetMapping("/test")
+    public String test() {
+        return "1";
+    }
+
     @GetMapping("/loginPage")
-    public String showLoginPage(){
+    public String showLoginPage() {
 
         return "login";
     }
 
     @GetMapping("/")
-    public String showMainPage(){
+    public String showMainPage() {
         Car car = carDAO.findCarById(5);
 
 

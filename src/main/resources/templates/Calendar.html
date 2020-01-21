@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet"
@@ -9,50 +9,35 @@
     <title>Title</title>
 </head>
 <body>
+<div th:insert="~{BarFragment :: copy}"></div>
 <div class="table-responsive">
 <table class="table table-bordered table-dark" >
 
+
     <tr>
         <td>Время</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
+        <td  th:each="empl : ${empls}">
+        <div th:text = "${empl.fio}"></div>
 
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-        <td>Имя</td>
-
-
+        </td>
     </tr>
     <tr>
         <td><p>13:00</p></td>
+        <td><p>12</p></td>
 
     </tr>
     <tr>
         <td><p>13:30</p></td>
+        <td><p></p></td>
+        <td><p>>Карвинг</p></td>
 
     </tr>
     <tr>
         <td><p>14:00</p></td>
-
+        <td><p></p></td>
+        <td><p></p></td>
+        <td><p></p></td>
+        <td><p>ghhjfj</p></td>
     </tr>
     <tr>
         <td><p>14:30</p></td>

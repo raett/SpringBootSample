@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,26 +16,14 @@
     <div class="col-4"><p></p></div>
     <div class="col-4">
         <form method="post" action="#" >
-            <input type="name" name="fio" class="form-control" placeholder="Your name">
+            <input type="name" name="fio" class="form-control" placeholder="Your name" required>
             <p></p>
-            <input type="phone" name="phone" class="form-control" placeholder="+79854215315">
+            <input type="phone" name="phone" class="form-control" placeholder="+79854215315" required>
 
             <p>Дата</p>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="date" value="11.12" id="option1" autocomplete="off" checked> 11.12
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="date" value="11.12" id="option2" autocomplete="off"> 12.12
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="date" value="12.12" id="option3" autocomplete="off"> 13.12
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="date" value="11.12" id="option4" autocomplete="off"> 14.12
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="date" value="11.12" id="option5" autocomplete="off"> 15.12
+            <div  class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary " th:each= "Day : ${workingDays}">
+                    <input type="radio" name="date"   required0 th:value="${Day}"  th:text="${Day}" autocomplete="off" >
                 </label>
             </div>
 
@@ -50,21 +38,21 @@
             </div>
 
             <p>Тип заказа</p>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" >
                 <label class="btn btn-secondary active">
-                    <input type="radio" name="typeOrder" value="short" id="optiontype1" autocomplete="off" checked> Коротко
+                    <input type="radio" name="typeOrder" value="Carving" id="optiontype1" autocomplete="off" checked>Карвинг
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="typeOrder" value="long" id="optiontype2" autocomplete="off"> Длинно
+                    <input type="radio" name="typeOrder" value="Massage" id="optiontype2" autocomplete="off">Массаж
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="typeOrder" value="long" id="optiontype3" autocomplete="off"> спортивная
+                    <input type="radio" name="typeOrder" value="Haircut" id="optiontype3" autocomplete="off">Стрижка
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="typeOrder" value="long" id="optiontype4" autocomplete="off"> Детская
+                    <input type="radio" name="typeOrder" value="Manicure" id="optiontype4" autocomplete="off">Маникюр
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="typeOrder" value="long" id="optiontype5" autocomplete="off"> стрижка "Канадка"
+                    <input type="radio" name="typeOrder" value="HairColoring" id="optiontype5" autocomplete="off">Покраска волос
                 </label>
 
             </div>

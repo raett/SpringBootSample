@@ -1,8 +1,6 @@
 package com.cko.sampleSpringProject;
 
-import com.cko.sampleSpringProject.dao.CarDAO;
-import com.cko.sampleSpringProject.dao.DayDAO;
-import com.cko.sampleSpringProject.dao.EmployeesDAO;
+import com.cko.sampleSpringProject.dao.*;
 import com.cko.sampleSpringProject.model.*;
 import com.cko.sampleSpringProject.service.AuthorityService;
 import com.cko.sampleSpringProject.service.SMSCService;
@@ -13,12 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.criteria.Order;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-import static java.lang.Math.random;
 
 @Component
 public class InitData {
@@ -36,12 +33,16 @@ public class InitData {
     CarDAO carDAO;
 
     @Autowired
+    ClientOrderDAO clientOrderDAO;
+
+    @Autowired
     EmployeesDAO employeesDAO;
 
     @Autowired
     DayDAO dayDAO;
 
-
+    @Autowired
+    BookDAO bookDAO;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -51,8 +52,9 @@ public class InitData {
     public void initData() {
 
         initEmpl();
-
-        initTime();
+        initOrders();
+        initBooks();
+//        initTime();
 //        initCars();
     }
 
@@ -60,6 +62,39 @@ public class InitData {
         for (int i = 0;i < 10; i++) {
             Car car = new Car(faker.color().name(), faker.name().firstName(), i*5000);
             carDAO.save(car);
+
+        }
+    }
+
+    private void initBooks(){
+        for (int i = 0;i < 5; i++) {
+            String fio = faker.name().fullName();
+            String phoneNum = "+" + faker.phoneNumber().phoneNumber();
+
+            int k = i + 1;
+            String date = "2020-01-"+k;
+            String typeOrder = faker.rickAndMorty().character();
+            String gender = "M";
+            String timeOrder = "21:30";
+            String master = faker.name().firstName();
+            Book book = new Book(fio, phoneNum, date, typeOrder, master, timeOrder, gender, i);
+            bookDAO.save(book);
+        }
+
+    }
+    private void initOrders() {
+
+
+        for (int i = 0;i < 5; i++){
+            String fio = faker.name().fullName();
+            String phoneNum = "+" + faker.phoneNumber().phoneNumber();
+            String pattern = "yyyy-MM-dd";
+
+            String date = "2020-01-"+i;
+            String typeOrder = faker.rickAndMorty().character();
+            String gender = "M";
+            ClientOrder order = new ClientOrder(fio, phoneNum, date, typeOrder, gender);
+            clientOrderDAO.save(order);
 
         }
     }
@@ -71,85 +106,7 @@ public class InitData {
             employeesDAO.save(empl);
         }
     }
-    private void initTime() {
-        LocalDate today = LocalDate.now();
-        int dayOfweek = today.getDayOfWeek().getValue();
 
-        switch (dayOfweek) {
-            case 1:
-
-                for(int i = 0; i < 5; i++){
-                    String thisDay = today.plusDays(i).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay);
-                }
-                break;
-            case 2:
-                for(int i = 0; i < 4; i++) {
-                    String thisDay = today.plusDays(i).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay); }
-                for(int i = 6; i < 7; i++) {
-                    String thisDay = today.plusDays(6).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay);
-                }
-
-                break;
-            case 3:
-                for(int i = 0; i < 3; i++){
-                    String thisDay = today.plusDays(i).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay);
-                }
-                for(int i = 5; i < 7; i++) {
-                    String thisDay = today.plusDays(i).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay);
-                }
-                break;
-            case 4:
-                for(int i = 0; i < 2; i++){
-                    String thisDay = today.plusDays(i).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay);
-                }
-                for(int i = 4; i < 7; i++) {
-                    String thisDay = today.plusDays(i).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay);
-                }
-                break;
-            case 5:
-                for(int i = 0; i < 1; i++){
-                    String thisDay = today.plusDays(i).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay);
-                }
-                for(int i = 3; i < 7; i++) {
-                    String thisDay = today.plusDays(i).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay);
-                }
-                break;
-            case 6:
-
-                for(int i = 2; i < 7; i++) {
-                    String thisDay = today.plusDays(i).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay);
-                }
-                break;
-            case 7:
-
-                for(int i = 1; i < 6; i++) {
-                    String thisDay = today.plusDays(i).getDayOfMonth() + "." + today.getMonth().getValue();
-                    Day newDay = new Day(thisDay);
-                    dayDAO.save(newDay);
-                }
-                break;
-        }
-    }
 
 
 

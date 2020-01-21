@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="~{BarFragment :: copy}"></div>
+<div class="row">
+    <div class="col-4"><p></p></div>
+    <div class="col-4">
+        <form method="post" action="/addorder" >
+            <p>номер запроса</p>
+            <input th:value = "${book.id}"  class="fadeIn third" name="numberOrder" readonly>
+            <p>ФИО посетителя</p>
+            <input th:value = "${book.fio}"  class="fadeIn third" name="fio" >
+            <p>Телефон</p>
+            <input th:value = "${book.phone}" class="fadeIn third" name="phone" >
+            <p>Дата записи</p>
+            <input th:value = "${book.date}" class="fadeIn third" name="date" >
+            <p>Тип услуги</p>
+            <input th:value = "${book.typeOrder}" class="fadeIn third" name="typeOrder" >
+            <p>Пол</p>
+            <input th:value = "${book.gender}" class="fadeIn third" name="gender">
+            <p>Имя мастера</p>
+            <div class="form-row align-items-center">
+                <div class="col-auto my-1">
+                    <select class="custom-select mr-sm-2" name="masterName">
+                        <option th:each = "empl : ${employee}">
+                            <div th:text = "${empl.fio}"></div>
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <p>Время приёма мастером</p>
+            <div class="form-row align-items-center">
+                <div class="col-auto my-1">
+                    <select class="custom-select mr-sm-2" name="timeOrder">
+                        <option th:each = "time : ${times}">
+                            <div th:text = "${time}"></div>
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <p></p>
+            <input type="submit" class="fadeIn fourth" value="Complete book">
+        </form>
+    </div>
+    <div class="col-4"><p></p></div>
+</div>
+</body>
+</html>

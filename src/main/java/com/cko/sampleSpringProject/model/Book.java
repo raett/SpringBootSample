@@ -1,13 +1,16 @@
 package com.cko.sampleSpringProject.model;
 
-
 import javax.persistence.*;
 
 @Entity
-public class ClientOrder {
+public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column
+    private long numberOrder;
 
     @Column
     private String fio;
@@ -22,17 +25,34 @@ public class ClientOrder {
     private String typeOrder;
 
     @Column
+    private String masterName;
+
+    @Column
+    private String timeOrder;
+
+    @Column
     private String gender;
-    public ClientOrder() {
+
+
+
+    public Book(){};
+
+    public Book(String fio, String phone,
+                String date, String typeOrder,
+                String masterName, String timeOrder,
+                String gender, long numberOrder) {
+        this.fio = fio;
+        this.numberOrder = numberOrder;
+        this.phone = phone;
+        this.date = date;
+        this.typeOrder = typeOrder;
+        this.masterName = masterName;
+        this.timeOrder = timeOrder;
+        this.gender = gender;
     }
 
-
-    public ClientOrder(String fio, String phone, String data, String typeOrder, String gender) {
-        this.fio = fio;
-        this.phone = phone;
-        this.date = data;
-        this.typeOrder = typeOrder;
-        this.gender = gender;
+    public long getId() {
+        return id;
     }
 
     public String getFio() {
@@ -67,8 +87,20 @@ public class ClientOrder {
         this.typeOrder = typeOrder;
     }
 
-    public long getId() {
-        return id;
+    public String getMasterName() {
+        return masterName;
+    }
+
+    public void setMasterName(String masterName) {
+        this.masterName = masterName;
+    }
+
+    public String getTimeOrder() {
+        return timeOrder;
+    }
+
+    public void setTimeOrder(String timeOrder) {
+        this.timeOrder = timeOrder;
     }
 
     public String getGender() {
@@ -78,4 +110,14 @@ public class ClientOrder {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public long getNumberOrder() {
+        return numberOrder;
+    }
+
+    public void setNumberOrder(long numberOrder) {
+        this.numberOrder = numberOrder;
+    }
 }
+
+
