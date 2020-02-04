@@ -33,22 +33,35 @@ public class Book {
     @Column
     private String gender;
 
+    @Column
+    private String statusOrder;
+
+    public Book() {
+    }
 
 
-    public Book(){};
-
-    public Book(String fio, String phone,
-                String date, String typeOrder,
-                String masterName, String timeOrder,
-                String gender, long numberOrder) {
-        this.fio = fio;
+    public Book(long numberOrder, String fio,
+                String phone, String date,
+                String typeOrder, String masterName,
+                String timeOrder, String gender,
+                String statusOrder) {
         this.numberOrder = numberOrder;
+        this.fio = fio;
         this.phone = phone;
         this.date = date;
         this.typeOrder = typeOrder;
         this.masterName = masterName;
         this.timeOrder = timeOrder;
         this.gender = gender;
+        this.statusOrder = statusOrder;
+    }
+
+    public String getStatusOrder() {
+        return statusOrder;
+    }
+
+    public void setStatusOrder(String statusOrder) {
+        this.statusOrder = statusOrder;
     }
 
     public long getId() {

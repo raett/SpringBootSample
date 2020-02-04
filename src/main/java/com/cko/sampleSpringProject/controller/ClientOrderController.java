@@ -28,32 +28,19 @@ public class ClientOrderController {
 
     @Autowired
     BookDAO bookDAO;
-    private List fiveWorkDays(){
-        List<String> day = new ArrayList<>();
 
-        LocalDate today = LocalDate.now();
-        while (day.size() < 5) {
-            today = today.plusDays(1);
-            int dayOfweek = today.getDayOfWeek().getValue();
-            if (dayOfweek!= 6 && dayOfweek != 7) {
-                String thisDay = today.toString();
-                day.add(thisDay);
-            }
-        };
-        return day;
-    }
 
     @GetMapping("/order")
     public ModelAndView howOrderFormPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("ClientForm");
-        modelAndView.addObject("workingDays",fiveWorkDays());
+        modelAndView.setViewName("ClientsPages/ClientForm");
+        modelAndView.addObject("workingDays",Time.giveFiveWorkingDays());
         return modelAndView;
     }
 
     @PostMapping("/order")
     public String addNewOrder(ClientOrder clientOrder) {
         orderDAO.save(clientOrder);
-        return "ThanksPage";
+        return "ClientsPages/ThanksPage";
     }
 }

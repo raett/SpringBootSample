@@ -8,14 +8,15 @@
           crossorigin="anonymous">
 
     <title>Title</title>
+    <div th:insert="~{BarFragment :: copy}"></div>
 </head>
 <body>
-<div th:insert="~{BarFragment :: copy}"></div>
+
 </div>
 <div class="row">
     <div class="col-5"><p></p></div>
     <div class="col-4">
-        <form method="post" action="/empl/addempls" >
+        <form method="post" action="/empl/add" >
             <input  id="color" class="fadeIn third" name="fio" placeholder="ФИО">
             <p></p>
             <input id="model" class="fadeIn third" name="phone" placeholder="Телефон">

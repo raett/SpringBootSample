@@ -8,9 +8,10 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
     <title>Title</title>
+    <div th:insert="~{BarFragment :: copy}"></div>
 </head>
 <body>
-<div th:insert="~{BarFragment :: copy}"></div>
+
 <table class="table table-dark">
     <thead>
     <tr>
@@ -27,8 +28,8 @@
         <td th:text = "${employees.phone}"></td>
         <td th:text = "${employees.experience}"></td>
         <td >
-            <a class="nav-item nav-link active" th:href="@{'/empl/editempl?id='+${employees.id}}">Edit</a>
-            <a class="nav-item nav-link active" th:href="@{'/empl/deleteempl?id='+${employees.id}}">Delete</a>
+            <a class="nav-item nav-link active" th:href="@{'/empl/edit?id='+${employees.id}}">Edit</a>
+            <a class="nav-item nav-link active" th:href="@{'/empl/delete?id='+${employees.id}}">Delete</a>
         </td>
     </tr>
 

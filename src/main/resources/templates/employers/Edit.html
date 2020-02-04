@@ -8,13 +8,14 @@
           crossorigin="anonymous">
 
     <title>Title</title>
-</head>
 <body>
 <div th:insert="~{BarFragment :: copy}"></div>
+</head>
+
 <div class="row">
     <div class="col-4"><p></p></div>
     <div class="col-4">
-        <form method="post" action="/empl/addempls" >
+        <form method="post" action="/empl/add" >
             <input th:value = "${empls.id}" id="id" class="fadeIn third" name="id" readonly>
             <p></p>
             <input th:value = "${empls.fio}" id="fio" class="fadeIn third" name="fio" placeholder="Color">

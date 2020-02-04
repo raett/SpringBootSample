@@ -7,49 +7,49 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
     <title>Title</title>
+    <div th:insert="~{BarFragment :: copy}"></div>
 </head>
 <body>
-<div th:insert="~{BarFragment :: copy}"></div>
 <div class="table-responsive">
-<table class="table table-bordered table-dark" >
+    <table class="table table-bordered table-dark">
 
 
-    <tr>
-        <td>Время</td>
-        <td  th:each="empl : ${empls}">
-        <div th:text = "${empl.fio}"></div>
+        <tr>
+            <td>Время</td>
+            <td th:each="empl : ${empls}">
+                <div th:text="${empl.fio}"></div>
 
-        </td>
-    </tr>
-    <tr>
-        <td><p>13:00</p></td>
-        <td><p>12</p></td>
+            </td>
+        </tr>
+        <tr>
+            <td><p>13:00</p></td>
+            <td><p>12</p></td>
 
-    </tr>
-    <tr>
-        <td><p>13:30</p></td>
-        <td><p></p></td>
-        <td><p>>Карвинг</p></td>
+        </tr>
+        <tr>
+            <td><p>13:30</p></td>
+            <td><p></p></td>
+            <td><p>>Карвинг</p></td>
 
-    </tr>
-    <tr>
-        <td><p>14:00</p></td>
-        <td><p></p></td>
-        <td><p></p></td>
-        <td><p></p></td>
-        <td><p>ghhjfj</p></td>
-    </tr>
-    <tr>
-        <td><p>14:30</p></td>
+        </tr>
+        <tr>
+            <td><p>14:00</p></td>
+            <td><p></p></td>
+            <td><p></p></td>
+            <td><p></p></td>
+            <td><p>ghhjfj</p></td>
+        </tr>
+        <tr>
+            <td><p>14:30</p></td>
 
-    </tr>
-    <tr>
-        <td><p>15:00</p></td>
-    </tr>
-    <tr>
-        <td><p>15:30</p></td>
+        </tr>
+        <tr>
+            <td><p>15:00</p></td>
+        </tr>
+        <tr>
+            <td><p>15:30</p></td>
 
-    </tr>
+        </tr>
     </table>
 </div>
 </body>

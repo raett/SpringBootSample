@@ -8,25 +8,26 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
     <title>Title</title>
+    <div th:insert="~{BarFragment :: copy}"></div>
 </head>
 <body>
-<div th:insert="~{BarFragment :: copy}"></div>
+
 <div class="row">
     <div class="col-4"><p></p></div>
     <div class="col-4">
-        <form method="post" action="/addorder" >
+        <form method="post" action="/book/neworder" >
             <p>номер запроса</p>
-            <input th:value = "${book.id}"  class="fadeIn third" name="numberOrder" readonly>
+            <input class="fadeIn third" name="numberOrder" value="5"readonly>
             <p>ФИО посетителя</p>
-            <input th:value = "${book.fio}"  class="fadeIn third" name="fio" >
+            <input class="fadeIn third" name="fio" >
             <p>Телефон</p>
-            <input th:value = "${book.phone}" class="fadeIn third" name="phone" >
+            <input class="fadeIn third" name="phone" >
             <p>Дата записи</p>
-            <input th:value = "${book.date}" class="fadeIn third" name="date" >
+            <input class="fadeIn third" name="date" >
             <p>Тип услуги</p>
-            <input th:value = "${book.typeOrder}" class="fadeIn third" name="typeOrder" >
+            <input class="fadeIn third" name="typeOrder" >
             <p>Пол</p>
-            <input th:value = "${book.gender}" class="fadeIn third" name="gender">
+            <input class="fadeIn third" name="gender">
             <p>Имя мастера</p>
             <div class="form-row align-items-center">
                 <div class="col-auto my-1">
@@ -47,6 +48,8 @@
                     </select>
                 </div>
             </div>
+            <p>Статус заказа</p>
+            <input class="fadeIn third" name="orderStatus" value="Waiting" readonly>
             <p></p>
             <input type="submit" class="fadeIn fourth" value="Complete book">
         </form>

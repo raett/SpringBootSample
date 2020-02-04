@@ -23,8 +23,8 @@
         <td th:text = "${order.typeOrder}"></td>
         <td th:text = "${order.gender}"></td>
         <td>
-            <a class="nav-item nav-link active" th:href="@{'/orderediting?order_id='+${order.id}}">Accept</a>
-            <a class="nav-item nav-link active" th:href="@{'/deleteorder?id='+${order.id}}">Delete</a>
+            <a class="nav-item nav-link active" th:href="@{'/book/orderediting?order_id='+${order.id}}">Accept</a>
+            <a class="nav-item nav-link active" th:href="@{'/book/deleteorder?id='+${order.id}}">Delete</a>
         </td>
     </tr>
 

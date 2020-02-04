@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface EmployeesDAO extends CrudRepository<Employe, Long> {
     Employe findEmployeById(long id);
+    List<Employe> findAllByOrderByFioAsc();
     List<Employe> findAll();
 }

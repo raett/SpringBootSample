@@ -47,10 +47,17 @@ public class InitData {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    UserDAO userDAO;
+
+    @Autowired
+    AuthorityDAO authorityDAO;
+
     Faker faker = new Faker();
 
     public void initData() {
 
+        initUserAndRoles();
         initEmpl();
         initOrders();
         initBooks();
@@ -59,38 +66,39 @@ public class InitData {
     }
 
     private void initCars() {
-        for (int i = 0;i < 10; i++) {
-            Car car = new Car(faker.color().name(), faker.name().firstName(), i*5000);
+        for (int i = 0; i < 10; i++) {
+            Car car = new Car(faker.color().name(), faker.name().firstName(), i * 5000);
             carDAO.save(car);
 
         }
     }
 
-    private void initBooks(){
-        for (int i = 0;i < 5; i++) {
+    private void initBooks() {
+        for (int i = 0; i < 5; i++) {
             String fio = faker.name().fullName();
             String phoneNum = "+" + faker.phoneNumber().phoneNumber();
 
             int k = i + 1;
-            String date = "2020-01-"+k;
+            String date = "2020-01-" + k;
             String typeOrder = faker.rickAndMorty().character();
             String gender = "M";
             String timeOrder = "21:30";
             String master = faker.name().firstName();
-            Book book = new Book(fio, phoneNum, date, typeOrder, master, timeOrder, gender, i);
+            Book book = new Book(i, fio, phoneNum, date, typeOrder, master, timeOrder, gender,  "complete");
             bookDAO.save(book);
         }
 
     }
+
     private void initOrders() {
 
 
-        for (int i = 0;i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             String fio = faker.name().fullName();
             String phoneNum = "+" + faker.phoneNumber().phoneNumber();
             String pattern = "yyyy-MM-dd";
 
-            String date = "2020-01-"+i;
+            String date = "2020-01-" + i;
             String typeOrder = faker.rickAndMorty().character();
             String gender = "M";
             ClientOrder order = new ClientOrder(fio, phoneNum, date, typeOrder, gender);
@@ -98,20 +106,18 @@ public class InitData {
 
         }
     }
+
     private void initEmpl() {
-        for (int i = 0;i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             String fio = faker.name().fullName();
             String phoneNum = "+" + faker.phoneNumber().phoneNumber();
-            Employe empl= new Employe(fio, phoneNum, i );
+            Employe empl = new Employe(fio, phoneNum, i);
             employeesDAO.save(empl);
         }
     }
 
 
-
-
-
-    private void initUserAndRoles(){
+    private void initUserAndRoles() {
         Authority adminAuthority = new Authority("ROLE_ADMIN");
         Authority userAuthority = new Authority("ROLE_USER");
         authorityService.insert(adminAuthority);
@@ -119,7 +125,10 @@ public class InitData {
 
         List<Authority> authorities = new ArrayList<Authority>();
         authorities.add(adminAuthority);
-        userService.insert(new User("1@mail.ru",bCryptPasswordEncoder.encode("1"), authorities));
+
+        for (int i = 0; i < 10; i++) {
+            userService.insert(new User(i + "@mail.ru", bCryptPasswordEncoder.encode(String.valueOf(i)), authorities));
+        }
 
 
     }

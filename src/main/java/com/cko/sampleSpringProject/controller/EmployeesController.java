@@ -21,13 +21,13 @@ public class EmployeesController {
     @Autowired
     EmployeesDAO employeesDAO;
 
-    @GetMapping("/addempls")
+    @GetMapping("/add")
     public String showLoginPage() {
 
         return "employers/Add";
     }
 
-    @GetMapping("/editempl")
+    @GetMapping("/edit")
     public ModelAndView showEditPage(@RequestParam long id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("employers/Edit");
@@ -36,27 +36,29 @@ public class EmployeesController {
         return modelAndView;
     }
 
-    @GetMapping("/deleteempl")
+    @GetMapping("/delete")
     public RedirectView showDeletePage(@RequestParam int id) {
         Employe employe = employeesDAO.findEmployeById(id);
         employeesDAO.delete(employe);
-        return new RedirectView("/empl/employelist");
+        return new RedirectView("/empl/list");
     }
 
-    @PostMapping("/editempl")
+    @PostMapping("/edit")
     public RedirectView editEmpl(Employe employe) {
+        Employe empl = employeesDAO .findEmployeById(employe.getId());
+        employeesDAO.delete(empl);
         employeesDAO.save(employe);
-        return new RedirectView("/empl/employelist");
+        return new RedirectView("/empl/list");
     }
 
-    @PostMapping("/addempls")
+    @PostMapping("/add")
     public RedirectView addEmpl(Employe employe) {
         employeesDAO.save(employe);
-        return new RedirectView("/empl/employelist");
+        return new RedirectView("/empl/list");
     }
 
 
-    @GetMapping("/employelist")
+    @GetMapping("/list")
     public ModelAndView showAllEmpl() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("employers/All");
@@ -64,21 +66,5 @@ public class EmployeesController {
         return modelAndView;
     }
 
-    @GetMapping("/calendar")
-    public ModelAndView showCalendar(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("Calendar");
-        List<Employe> empls = employeesDAO.findAll();
 
-//        for(int i = 9; i < 21; i++){
-//            String time ="";
-//
-//            time = i + " : 00";
-//            times.add(time);
-//            time = i + " : 30";
-//            times.add(time);
-//        }
-        modelAndView.addObject("empls", empls);
-        return modelAndView;
-    }
 }
